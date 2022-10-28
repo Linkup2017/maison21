@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+     <record id="search_account_statement" model="ir.actions.act_window">
+        <field name="name">Search Bank Statement</field>
+        <field name="res_model">account.bank.statement</field>
+    <!--       <field name="domain">[('journal_id.name', '=', 'name')]</field>-->
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="account_bank_statement_search_inherit" model="ir.ui.view">
+        <field name="name">account.bank.statement.search.inherit</field>
+        <field name="model">account.bank.statement</field>
+        <field name="inherit_id" ref="account.view_bank_statement_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="7 Days" name="bank_search" context="{}" domain="[('date','&gt;',((context_today() + datetime.timedelta(days=-7)).strftime('%Y-%m-%d')))]"></filter>
+                <filter string="15 Days" name="bank_search_15" context="{}" domain="[('date','&gt;',((context_today() + datetime.timedelta(days=-15)).strftime('%Y-%m-%d')))]"></filter>
+                <filter string="30 Days" name="bank_search_30" context="{}" domain="[('date','&gt;',((context_today() + datetime.timedelta(days=-30)).strftime('%Y-%m-%d')))]"></filter>
+<!--                <filter string="7 Days" name="bank_search" context="{}" domain="['date', '&gt;=', ((context_today() + datetime.timedelta(weeks=-1)).strftime('%Y-%m-%d'))]"></filter>-->
+            </xpath>
+        </field>
+    </record>
+
+
+
+<!--    <record id="view_bank_statement_line_inherit" model="ir.ui.view">-->
+<!--            <field name="name">account.view_bank_statement.form.inherit</field>-->
+<!--            <field name="model">account.bank.statement</field>-->
+<!--            <field name="inherit_id" ref="account.view_bank_statement_form"/>-->
+<!--            <field name="priority">8</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//tree" position="replace">-->
+<!--                    <tree string="Statement lines" create="0" decoration-muted="is_reconciled" limit="500">-->
+<!--                        &lt;!&ndash; Invisible fields &ndash;&gt;-->
+<!--                        <field name="company_id" />-->
+<!--                        <field name="state" invisible="1"/>-->
+<!--                        <field name="is_reconciled" invisible="1"/>-->
+<!--                        <field name="currency_id" invisible="1"/>-->
+<!--                        <field name="partner_bank_id" invisible="1"/>-->
+<!--                        <field name="country_code" invisible="1"/>-->
+
+<!--                        &lt;!&ndash; Visible fields &ndash;&gt;-->
+<!--                        <field name="sequence" widget="handle"/>-->
+<!--                        <field name="date" attrs="{'readonly': [('parent.state', '!=', 'open')]}"/>-->
+<!--                        <field name="payment_ref"/>-->
+<!--                        <field name="partner_id" attrs="{'readonly': [('parent.state', '!=', 'open')]}" domain="['|', ('parent_id','=', False), ('is_company','=',True)]"/>-->
+<!--                        <field name="ref" optional="hidden"/>-->
+<!--                        <field name="narration" string="Notes" optional="hidden"/>-->
+<!--                        <field name="transaction_type" optional="hidden"/>-->
+<!--                        <field name="amount_currency" optional="hidden" groups="base.group_multi_currency" attrs="{'readonly': [('parent.state', '!=', 'open')]}"/>-->
+<!--                        <field name="foreign_currency_id" optional="hidden" groups="base.group_multi_currency" attrs="{'readonly': [('parent.state', '!=', 'open')]}"/>-->
+<!--                        <field name="tid"  invisible="1" attrs="{'readonly': [('parent.state', '!=', 'open')]}"/>-->
+<!--                        <field name="amount" attrs="{'readonly': [('parent.state', '!=', 'open')]}"/>-->
+<!--                        <field name="account_number" optional="hidden"/>-->
+
+<!--                        &lt;!&ndash; Buttons &ndash;&gt;-->
+<!--                        <button name="button_undo_reconciliation" type="object" attrs="{'invisible': [('is_reconciled', '=', False)], 'column_invisible': [('parent.state', '!=', 'posted')]}" string="Revert reconciliation" icon="fa-undo"/>-->
+<!--                    </tree>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--    </record>-->
+
+    <record id="account_view_account_journal_tree_inherit" model="ir.ui.view">
+            <field name="name">account_view_account_journal_tree_inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_tree"/>
+            <field name="priority">8</field>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='journal_group_ids']" position="replace">
+                    <field name="journal_group_ids" widget="many2many_tags" readonly="1" optional="show" invisible="1"/>
+               </xpath>
+
+               <xpath expr="//field[@name='type']" position="replace">
+                    <field name="bank_list_id"/>
+               </xpath>
+
+                <xpath expr="//field[@name='code']" position="replace">
+                    <field name="code" optional="show" invisible="1"/>
+               </xpath>
+
+                <xpath expr="//field[@name='default_account_id']" position="replace">
+                    <field name="default_account_id" optional="show" invisible="1"/>
+               </xpath>
+            </field>
+    </record>
+
+<!--    <record id="view_bank_statement_line_tree_inherit" model="ir.ui.view">-->
+<!--            <field name="name">	account.view.bank.statement.tree.inherit</field>-->
+<!--            <field name="model">account.bank.statement</field>-->
+<!--            <field name="inherit_id" ref="account.view_bank_statement_tree"/>-->
+<!--            <field name="priority">8</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--               <xpath expr="//tree" position="replace">-->
+<!--                   <tree>-->
+<!--                        <field name="name"/>-->
+<!--                        <field name="date"/>-->
+<!--                        <field name="line_ids"/>-->
+<!--                        <field name="journal_id"/>-->
+<!--                        <field name="company_id" groups="base.group_multi_company"/>-->
+<!--                        <field name="balance_start" readonly="1"/>-->
+<!--                        <field name="balance_end_real" readonly="1"/>-->
+<!--                        <field name="balance_end" invisible="1"/>-->
+<!--                        <field name="currency_id" invisible="1"/>-->
+<!--&lt;!&ndash;                        <field name="state"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <field name="is_difference_zero" invisible="1"/>&ndash;&gt;-->
+<!--                   </tree>-->
+<!--               </xpath>-->
+<!--            </field>-->
+<!--    </record>-->
+
+<!--    <record id="view_bank_statement_line_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">	account.view.bank.statement.form.inherit</field>-->
+<!--            <field name="model">account.bank.statement</field>-->
+<!--            <field name="inherit_id" ref="account.view_bank_statement_form"/>-->
+<!--            <field name="priority">8</field>-->
+<!--            <field name="arch" type="xml">-->
+<!--               <xpath expr="//field[@name='balance_start']" position="replace">-->
+<!--                   <field name="balance_start" class="oe_inline" attrs="{'readonly': [('state', '=', 'confirm')]}" readonly="1"/>-->
+<!--               </xpath>-->
+<!--                <xpath expr="//field[@name='balance_end_real']" position="replace">-->
+<!--                   <field name="balance_end_real"  class="oe_inline" attrs="{'readonly': [('state', '=', 'confirm')]}" readonly="1"/>-->
+<!--               </xpath>-->
+<!--            </field>-->
+<!--    </record>-->
+
+
+
+    <record id="inherit_setup_bank_account_wizard" model="ir.ui.view">
+            <field name="name">account.setup_bank_account_wizard_inherit</field>
+            <field name="model">account.setup.bank.manual.config</field>
+            <field name="inherit_id" ref="account.setup_bank_account_wizard"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='bank_id']" position="after">
+                    <field name="bank_list_id"  groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="bank_password" required='True' groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                </xpath>
+
+                <xpath expr="//field[@name='bank_bic']" position="after">
+                    <field name="bank_code" groups="kr_pb_bank.group_linkup_account_manger" placeholder="“금융기관 번호 입력"  readonly="1" force_save="1"/>
+                    <field name="bank_availability" groups="kr_pb_bank.group_linkup_account_manger" readonly="1"/>
+                    <field name="bank_type" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="date_today" string='Transaction from' groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="value_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0004')], 'required': [('bank_code', '=', '0004')]}" placeholder="“국민은행”인 경우 필수 " groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="birth_date" required='True' placeholder="“개인”인 경우:예금주 생년월일(6자리-YYMMDD), “법인”인 경우:사업자번호(10자리)" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|',('bank_code', '=' , False), ('bank_code', '!=', '0031')], 'required': [('bank_code', '=', '0031')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0031')], 'required': [('bank_code', '=', '0031')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0048')], 'required': [('bank_code', '=', '0048')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|',('bank_code', '=' , False), ('bank_code', '!=', '0048')], 'required': [('bank_code', '=', '0048')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False),('bank_code', '!=', '0088')], 'required': [('bank_code', '=', '0088')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|', ('bank_code', '=' , False),('bank_code', '!=', '0088')], 'required': [('bank_code', '=', '0088')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                </xpath>
+            </field>
+    </record>
+
+
+
+    <record id="account_journal_form_inherit" model="ir.ui.view">
+            <field name="name">account.journal.inherit</field>
+            <field name="model">account.journal</field>
+            <field name="inherit_id" ref="account.view_account_journal_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//sheet" position="before">
+                    <header>
+
+                        <field name="status" widget="statusbar" statusbar_visible="draft,create" attrs="{'invisible': [('type', '!=', 'bank')]}"/>
+                        <button name="set_bank_data" string="Connect" type="object" attrs="{'invisible': ['|', ('type', '!=', 'bank'), ('status', '=', 'create')]}"/>
+<!--                        <button name="bank_check_etax_status_all" string="Import data from Popbill" type="object" attrs="{'invisible': [('type', '!=', 'bank')]}"/>-->
+<!--                        <button name="bank_check_etax_status_create_all" string="Create Bank statement" type="object" attrs="{'invisible': [('type', '!=', 'bank')]}"/>-->
+<!--                        <button name="account_bank_statement" string="Create Account Bank Statement" type="object" attrs="{'invisible': [('type', '!=', 'bank')]}"/>-->
+                        <button name="status_changer" string="Unconnect" type="object" attrs="{'invisible': [('status', '=', 'draft')]}"/>
+<!--                        <button name="check_etax_account_holder" type="object"  string="Test"/>-->
+
+                    </header>
+
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="inside">
+                    <button class="oe_stat_button" type="object" name="open_account_bank_statement_view" icon="fa-book" string="Transaction History"  attrs="{'invisible': [('type', '!=', 'bank')]}"/>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="after">
+                    <div role="alert" class="alert alert-success"
+                         style="height:48px, width30px,margin-bottom:1px;"
+                         attrs="{'invisible':[('warning' ,'=', False)]}"
+                    >이미 연동된 계좌번호 입니다 </div>
+                </xpath>
+                <xpath expr="//div[hasclass('oe_button_box')]" position="after">
+                    <widget
+                    name="web_ribbon"
+                    title="계좌연동 확인"
+                    bg_color="bg-success"
+                    attrs="{'invisible': [ ('status', '!=', 'create')]}"
+                     />
+                </xpath>
+
+
+                <xpath expr="//field[@name='bank_account_id']" position="replace">
+                     <field name="bank_account_id" attrs="{'readonly': [('status', '=', 'create')]}"  string="Account Number" context="{'default_partner_id': company_partner_id, 'form_view_ref': 'account.view_company_partner_bank_form'}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='bank_id']" position="replace">
+                    <field name="bank_id" invisible="1"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='bank_id']" position="after">
+                    <field name="bank_list_id" attrs="{'invisible': [('bank_account_id', '=', False)], 'readonly': [('status', '=', 'create')]}"/>
+                </xpath>
+
+                <xpath expr="//field[@name='bank_statements_source']" position="replace">
+                    <field name="bank_statements_source" widget="radio" attrs="{'required': [('type', '=', 'bank')], 'readonly': [('status', '=', 'create')]}" groups="account.group_account_readonly"/>
+                </xpath>
+
+
+                <xpath expr="//field[@name='bank_statements_source']" position="after">
+                    <field name="warning" invisible="1"/>
+                    <field name="bank_code" attrs="{'readonly': [('status', '=', 'create')]}" placeholder="“금융기관 번호 입력”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="bank_type" attrs="{'readonly': [('status', '=', 'create')]}" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="bank_password" attrs="{'readonly': [('status', '=', 'create')]}" placeholder="“계좌 비밀번호 입력”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                    <field name="value_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0004')], 'readonly': [('status', '=', 'create')]}" placeholder="“국민은행”인 경우 필수 " groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="birth_date" attrs="{'readonly': [('status', '=', 'create')]}" placeholder="“개인”인 경우:예금주 생년월일(6자리-YYMMDD), “법인”인 경우:사업자번호(10자리)" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="date_today" attrs="{'readonly': [('status', '=', 'create')]}" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|',('bank_code', '=' , False), ('bank_code', '!=', '0031')], 'readonly': [('status', '=', 'create')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0031')], 'readonly': [('status', '=', 'create')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False), ('bank_code', '!=', '0048')], 'readonly': [('status', '=', 'create')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|',('bank_code', '=' , False), ('bank_code', '!=', '0048')], 'readonly': [('status', '=', 'create')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                    <field name="search_bank_id" attrs="{'invisible': ['|', ('bank_code', '=' , False),('bank_code', '!=', '0088')]}" placeholder="“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger"/>
+                    <field name="search_bank_password" attrs="{'invisible': ['|', ('bank_code', '=' , False),('bank_code', '!=', '0088')], 'readonly': [('status', '=', 'create')]}" placeholder="“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”" groups="kr_pb_bank.group_linkup_account_manger" password="True"/>
+                </xpath>
+            </field>
+    </record>
+
+
+    <!--Batch etax lines-->
+
+
+    <record model="ir.actions.server" id="bank_history_search">
+        <field name="name">Get Data form Popbill</field>
+        <field name="model_id" ref="model_account_journal"/>
+        <field name="binding_model_id" ref="model_account_journal"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+           action = records.bank_check_etax_status_all()
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="bank_history_create">
+        <field name="name">Update Bank History</field>
+        <field name="model_id" ref="model_account_journal"/>
+        <field name="binding_model_id" ref="model_account_journal"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+           action = records.bank_check_etax_status_create_all()
+        </field>
+    </record>
+
+    <record model="ir.actions.server" id="account_bank_statement_create">
+        <field name="name">Update Bank Statement</field>
+        <field name="model_id" ref="model_account_journal"/>
+        <field name="binding_model_id" ref="model_account_journal"/>
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+           action = records.account_bank_statement()
+        </field>
+    </record>
+
+
+
+</odoo>

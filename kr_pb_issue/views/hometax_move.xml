@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+        <record id="view_hometax_move_form_inherit" model="ir.ui.view">
+            <field name="name">hometax.move.form</field>
+            <field name="inherit_id" ref="kr_etax.view_hometax_move_form"/>
+            <field name="model">hometax.move</field>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="inside">
+                    <button
+                    name="sendhometax"
+                    string="발행"
+                    class="oe_highlight"
+                    type="object"
+                    attrs="{'invisible': [('state', '!=', 'draft')]}"
+                    />
+
+
+<!--                    <button-->
+<!--                    name="customer_view"-->
+<!--                    string="확인"-->
+<!--                    class="oe_highlight"-->
+<!--                    type="object"-->
+
+<!--                    />-->
+                    <button
+                    name="create_order_wizard"
+                    string="연결"
+                    class="oe_highlight"
+                    type="object"
+                     attrs="{'invisible': [('state', '!=', 'sent')]}"
+                    />
+
+                    <button
+                    name="button_cancel"
+                    string="발행 취소"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible' : [('state', '!=', 'issued')]}"
+                    />
+
+                    <button
+                    name="pdfhometax"
+                    string="인쇄"
+                    class="oe_highlight"
+                    type="object"
+                    attrs="{'invisible': [('state', '=', 'draft')]}"
+                />
+
+                    <button
+                    name="sendhometax_minus"
+                    string="마이너스 계산서 발행"
+                    class="oe_highlight"
+                    type="object"
+                    attrs="{'invisible': ['|',('state', '!=', 'sent'),('etaxType', '=', 'etaxType2')]}"
+                />
+                    <button
+                        name="update_etax_status_all"
+                        string="체크"
+                        class="oe_highlight"
+                        type="object"
+                        attrs="{'invisible': [('state', '!=', 'sending')]}"
+                    />
+                    <button
+                    name="status_view"
+                    string="e-Status"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="1"
+                />
+                </xpath>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,24 @@
+<odoo>
+  <record id="sms_sms_module_category" model="ir.module.category" >
+    <field name="name">SMS</field>
+    <field name="sequence">3</field>
+  </record>
+
+  <record id="group_sms_sms_user" model="res.groups">
+    <field name="name">SMS / User</field>
+    <field name="category_id" ref="sms_sms_module_category"/>
+  </record>
+
+  <record id="group_sms_sms_manager" model="res.groups">
+    <field name="name">SMS / Manager</field>
+    <field name="category_id" ref="sms_sms_module_category"/>
+    <field name="implied_ids" eval="[(4, ref('group_sms_sms_user'))]"/>
+    <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+  </record>
+
+  <data noupdate="1">
+    <record id="base.default_user" model="res.users">
+      <field name="groups_id" eval="[(4,ref('group_sms_sms_manager'))]"/>
+    </record>
+  </data>
+</odoo>

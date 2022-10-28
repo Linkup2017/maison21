@@ -1,0 +1,48 @@
+<odoo>
+    <!--Batch etax lines-->
+    <record id="batch_hometax_move_view_send" model="ir.ui.view">
+        <field name="name">Batch hometax move1</field>
+        <field name="model">batch.send.hometax.move</field>
+        <field name="arch" type="xml">
+            <form string="eTax Entries">
+                <span
+                    class="o_form_label"
+                >Selected eTax invoices will be issued to Hometax.</span>
+                <footer>
+                    <button
+                        string="Issue eTaxs batch"
+                        name="issue_move_batch_send"
+                        type="object"
+                        default_focus="1"
+                        class="btn-primary"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_batch_hometax_move_send" model="ir.actions.act_window">
+        <field name="name">Batch Issue eTax invoice</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">batch.send.hometax.move</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="batch_hometax_move_view_send" />
+        <field name="context">{}</field>
+        <field name="target">new</field>
+        <field
+            name="help"
+        >Selected eTax invoices will be issued to Hometax.</field>
+        <field
+            name="groups_id"
+            eval="[(4, ref('account.group_account_invoice'))]"
+        />
+        <field name="binding_model_id" ref="kr_pb_issue.model_hometax_move" />
+        <field name="binding_view_types">list</field>
+    </record>
+
+</odoo>

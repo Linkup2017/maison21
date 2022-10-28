@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="create_order_wizard_from" model="ir.ui.view">
+        <field name="name">Add Order Form</field>
+        <field name="model">hometax.orders.wizard</field>
+        <field name="arch" type="xml">
+            <form string="create_order_wizard">
+                <sheet>
+                    <group>
+                        <field name="account_ids" context="{'payment_state': 'not_paid'}" string="청구서 목록">
+                            <tree >
+                                <field name="name" />
+                                <field name="amount_untaxed_signed" string="세금 제외"/>
+                                <field name="amount_total_signed" string="합계"/>
+                                <field name="payment_state"/>
+                            </tree>
+                        </field>
+
+                    </group>
+                    <footer>
+                        <button string="Create"  name='sendaccount' type="object" class='btn btn-primary'/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="create_order_wizard" model="ir.actions.act_window">
+        <field name="name">Add Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hometax.orders.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="create_order_wizard_from"/>
+        <field name="target">new</field>
+    </record>
+
+
+</odoo>

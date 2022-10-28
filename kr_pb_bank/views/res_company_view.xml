@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="bank_res_company_view_form_inherit" model="ir.ui.view">
+        <field name="name">res.company.form.inherit</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="model">res.company</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='hometax_settings']" position='after'>
+                <group string="HomeTax Bank Settings" name="hometax_bank_settings" attrs="{'invisible': [('etax_on', '=', False)]}"  groups="base.group_no_one">
+<!--                <group string="HomeTax Bank Settings" name="hometax_bank_settings" attrs="{'invisible': [('etax_on', '=', False)]}" >-->
+                    <button name="check_etax_account_holder" class="oe_highlight" icon="fa-bars" type="object" string="예금주 조회"/>
+                    <field name="connect_bank" attrs="{'invisible': ['|', ('connect_bank', '=', 'failed'), ('connect_bank', '=', 'connect')]}"/>
+                    <field name="connect_bank" style="color: green;" attrs="{'invisible': ['|', ('connect_bank', '=', 'draft'), ('connect_bank', '=', 'failed')]}"/>
+                    <field name="connect_bank" style="color: red;" attrs="{'invisible': ['|', ('connect_bank', '=', 'draft'), ('connect_bank', '=', 'connect')]}"/>
+
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_linkup_hometax_group_user,linkup_hometax_group_user,model_hometax_move,kr_etax.group_linkup_hometax_user,1,0,0,0
+access_linkup_hometax_group_manager,linkup_hometax_group_manager,model_hometax_move,kr_etax.group_linkup_hometax_manager,1,1,1,1
+access_hometax_orders_group_user,hometax_orders_group_user,model_hometax_orders_wizard,kr_etax.group_linkup_hometax_user,1,0,0,0
+access_hometax_orders_group_manager,hometax_orders_group_manager,model_hometax_orders_wizard,kr_etax.group_linkup_hometax_manager,1,1,1,1
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+<!--        <record id="view_hometax_move_form_inherit" model="ir.ui.view">-->
+<!--            <field name="name">hometax.move.form.inherit</field>-->
+<!--            <field name="model">hometax.move</field>-->
+<!--            <field name="inherit_id" ref="kr_etax.view_hometax_move_form"/>-->
+<!--                <xpath expr="//header" position="inside">-->
+<!--                        <button-->
+<!--                        name="check_etax_status_all"-->
+<!--                        string="체크"-->
+<!--                        class="oe_highlight"-->
+<!--                        attrs="{'invisible': ['|', ('state', '=', 'draft'), ('state', '=', 'cancelled')]}"-->
+<!--                        type="object" />-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+        <record id="view_hometax_move_update_list" model="ir.actions.server">
+           <field name="name">Update List Popbill</field>
+           <field name="model_id" ref="model_hometax_move"/>
+           <field name="state">code</field>
+           <field name="code">action = model.check_etax_status_all()</field>
+        </record>
+
+        <record id="view_hometax_move_update_list_buy" model="ir.actions.server">
+           <field name="name">Update List Popbill (Buy) </field>
+           <field name="model_id" ref="model_hometax_move"/>
+           <field name="state">code</field>
+           <field name="code">action = model.check_etax_status_all_buy()</field>
+        </record>
+
+        <record id="view_hometax_move_update_list_trustee" model="ir.actions.server">
+           <field name="name">Update List Popbill (Trustee) </field>
+           <field name="model_id" ref="model_hometax_move"/>
+           <field name="state">code</field>
+           <field name="code">action = model.check_etax_status_all_trustee()</field>
+        </record>
+
+<!--        <menuitem id="view_hometax_move_update_list_menu"-->
+<!--                  name="Update List" action="view_hometax_move_update_list" sequence="1" parent="kr_etax.kr_etax_hometax1"/>-->
+
+<!--        <menuitem id="view_hometax_move_update_buy_list_menu"-->
+<!--                  name="Update List (Buy)" action="view_hometax_move_update_list_buy" sequence="2" parent="kr_etax.kr_etax_hometax1"/>-->
+
+<!--        <menuitem id="view_hometax_move_update_trustee_list_menu"-->
+<!--                  name="Update List (Trustee)" action="view_hometax_move_update_list_trustee" sequence="3" parent="kr_etax.kr_etax_hometax1"/>-->
+</odoo>

@@ -1,0 +1,66 @@
+.o_form_view.o_ktax .o_group.ktax_group tbody > tr > td.o_td_label {
+    min-width: 100px;
+}
+.o_form_view.o_ktax .o_group {
+    margin: 0px 0px;
+}
+
+.grid-container2 {
+    display: inline-flex;
+    padding-left: 800px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    padding: 2px 40px 2px 100px;
+}
+.grid-container1 {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+    padding: 2px 38px 2px 100px;
+}
+
+.grid-container > div {
+    background-color: rgba(238, 238, 238, 0.8);
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 2px;
+}
+
+.grid-container1 > div {
+    background-color: rgba(238, 238, 238, 0.8);
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 2px;
+}
+
+.o_form_view .grid-container .o_field_widget {
+    margin-bottom: 0px;
+}
+
+.o_form_view .grid-container1 .o_field_widget {
+    margin-bottom: 0px;
+}
+
+.grid-container > div {
+    background-color: rgba(238, 238, 238, 0.8);
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 2px;
+}
+
+.grid-container1 > div {
+    background-color: rgba(238, 238, 238, 0.8);
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 2px;
+}
+
+.grid-container > div.subvalue {
+    background-color: white;
+}
+
+.grid-container1 > div.subvalue {
+    background-color: white;
+}

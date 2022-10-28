@@ -1,0 +1,531 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* kr_pb_bank
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-07-15 02:36+0000\n"
+"PO-Revision-Date: 2022-07-15 02:36+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__search_bank_account__date_select__15
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_bank_statement_search_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.transaction_history_search
+msgid "15 Days"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__search_bank_account__date_select__30
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_bank_statement_search_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.transaction_history_search
+msgid "30 Days"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__search_bank_account__date_select__7
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_bank_statement_search_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.transaction_history_search
+msgid "7 Days"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__accountnumber
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__accountnumber
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.transaction_history_form
+msgid "Account Number"
+msgstr "계좌번호"
+
+#. module: kr_pb_bank
+#: model:res.groups,name:kr_pb_bank.group_linkup_account_manger
+msgid "Account Password"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__amount
+msgid "Amount"
+msgstr "잔액"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__amount_currency
+msgid "Amount Currency"
+msgstr ""
+
+#. module: kr_pb_bank
+#. openerp-web
+#: code:addons/kr_pb_bank/static/src/js/form_view.js:0
+#, python-format
+msgid "Archive"
+msgstr ""
+
+#. module: kr_pb_bank
+#. openerp-web
+#: code:addons/kr_pb_bank/static/src/js/form_view.js:0
+#, python-format
+msgid "Are you sure that you want to archive this record?"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_account_bank_statement__linkup_balance_end
+msgid "Balance as calculated based on Opening Balance and transaction lines"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_res_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__bank_id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__bank_id
+#: model:ir.ui.menu,name:kr_pb_bank.account_view_bank_statement_form_menu
+msgid "Bank"
+msgstr "은행"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__account_number
+msgid "Bank Account Number"
+msgstr "계좌번호"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__bank_type
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__bank_type
+msgid "Bank Account Type"
+msgstr "계좌 종류"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__bank_code
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__bank_code
+msgid "Bank Code"
+msgstr "은행 코드"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__value_bank_id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__value_bank_id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__bank_id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__bank_id_name
+msgid "Bank ID"
+msgstr "계정ID"
+
+#. module: kr_pb_bank
+#: model:ir.actions.act_window,name:kr_pb_bank.search_res_bank_list
+#: model:ir.ui.menu,name:kr_pb_bank.account_view_bank_statement_tree_menu
+msgid "Bank List"
+msgstr "은행"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__bank_password
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__bank_password
+msgid "Bank PW"
+msgstr "계좌 비밀번호"
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_account_bank_statement
+msgid "Bank Statement"
+msgstr "예금거래 명세서"
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_account_bank_statement_line
+msgid "Bank Statement Line"
+msgstr "예금거래 명세서 내역"
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_account_setup_bank_manual_config
+msgid "Bank setup manual config"
+msgstr "은행 설정 수동 구성"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__birth_date
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__birth_date
+msgid "Birth Date"
+msgstr "생년월일"
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.search_bank_account_form
+msgid "Cancel"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__check_create
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__check_create
+msgid "Check"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_bank_statement__linkup_balance_end
+msgid "Computed Balance"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_journal__status__create
+msgid "Create"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+msgid "Create to Popbill"
+msgstr "팝빌 연결하기"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__create_uid
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__create_date
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__result_data
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__result_data
+msgid "Data"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__date
+msgid "Date"
+msgstr ""
+
+#. module: kr_pb_bank
+#. openerp-web
+#: code:addons/kr_pb_bank/static/src/js/form_view.js:0
+#, python-format
+msgid "Delete"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_bank_statement_line__deposit
+msgid "Deposit"
+msgstr "입금"
+
+#. module: kr_pb_bank
+#: model:ir.actions.server,name:kr_pb_bank.ir_cron_deposit_status_update_ir_actions_server
+#: model:ir.cron,cron_name:kr_pb_bank.ir_cron_deposit_status_update
+#: model:ir.cron,name:kr_pb_bank.ir_cron_deposit_status_update
+msgid "Deposit Transaction Statement"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.actions.server,name:kr_pb_bank.ir_cron_deposit_status_create_ir_actions_server
+#: model:ir.cron,cron_name:kr_pb_bank.ir_cron_deposit_status_create
+#: model:ir.cron,name:kr_pb_bank.ir_cron_deposit_status_create
+msgid "Deposit Transaction Statement Create"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__display_name
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_journal__status__draft
+msgid "Draft"
+msgstr ""
+
+#. module: kr_pb_bank
+#. openerp-web
+#: code:addons/kr_pb_bank/static/src/js/form_view.js:0
+#, python-format
+msgid "Duplicate"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__edate
+msgid "End date"
+msgstr ""
+
+#. module: kr_pb_bank
+#: code:addons/kr_pb_bank/models/lookup.py:0
+#: code:addons/kr_pb_bank/models/lookup.py:0
+#, python-format
+msgid "Exception Occur : [%d] %s"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__foreign_currency_id
+msgid "Foreign Currency"
+msgstr "통화"
+
+#. module: kr_pb_bank
+#: model:ir.module.category,name:kr_pb_bank.module_category_linkup_hometax
+msgid "Hometax Bank"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__id
+msgid "ID"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_account_journal
+msgid "Journal"
+msgstr "분개장"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__currency_id
+msgid "Journal Currency"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__payment_ref
+msgid "Label"
+msgstr "내용"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account____last_update
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__write_uid
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__write_date
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:res.groups,name:kr_pb_bank.group_linkup_hometax_manager
+msgid "Linkup hometax Manager"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:res.groups,name:kr_pb_bank.group_linkup_hometax_user
+msgid "Linkup hometax User"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__narration
+msgid "Memo"
+msgstr "메모"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__name
+msgid "Name"
+msgstr "계좌번호"
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.view_bank_statement_line_form_inherit
+msgid "Notes"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.view_bank_statement_line_form_inherit
+msgid "Revert reconciliation"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.transaction_history_search
+msgid "Search"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.search_bank_account_form
+msgid "Search Account Bank"
+msgstr ""
+
+#. module: kr_pb_bank
+#: code:addons/kr_pb_bank/wizard/search_bank.py:0
+#, python-format
+msgid "Search Account Bank "
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.actions.act_window,name:kr_pb_bank.search_account_journal_form
+msgid "Search Account Journal"
+msgstr "계좌"
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+msgid "Search Account inquiry"
+msgstr "이체내역 불러오기"
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+msgid "Search Account inquiry and Create Popbill"
+msgstr "팝빌연결 후 이체내역 불러오기"
+
+#. module: kr_pb_bank
+#: model:ir.actions.act_window,name:kr_pb_bank.search_bank_account_wizard
+msgid "Search Bank Account"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__search_bank_id
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__search_bank_id
+msgid "Search Bank ID"
+msgstr "계정ID"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__search_bank_password
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_setup_bank_manual_config__search_bank_password
+msgid "Search Bank PW"
+msgstr "계정 아이디"
+
+#. module: kr_pb_bank
+#: model:ir.actions.act_window,name:kr_pb_bank.search_account_statement
+msgid "Search Bank Statement"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.search_bank_account_form
+msgid "Search2"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__date_select
+msgid "Select Search Date"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_search_bank_account__sdate
+msgid "Start date"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_journal__status
+msgid "State"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.view_bank_statement_line_form_inherit
+msgid "Statement lines"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_transaction_history_inquiry__amount_currency
+msgid ""
+"The amount expressed in an optional other currency if it is a multi-currency"
+" entry."
+msgstr ""
+
+#. module: kr_pb_bank
+#: code:addons/kr_pb_bank/models/lookup.py:0
+#: model:ir.actions.act_window,name:kr_pb_bank.transaction_history_inquiry
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+#, python-format
+msgid "Transaction History"
+msgstr "이체내역"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__transaction_type
+msgid "Transaction Type"
+msgstr "이체종류"
+
+#. module: kr_pb_bank
+#. openerp-web
+#: code:addons/kr_pb_bank/static/src/js/form_view.js:0
+#, python-format
+msgid "Unarchive"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_account_bank_statement_line__withdraw
+msgid "Withdraw"
+msgstr "출금"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__deposit
+msgid "deposit"
+msgstr "입금"
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_search_bank_account
+msgid "search.bank.account"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__tid
+msgid "tid"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model,name:kr_pb_bank.model_transaction_history_inquiry
+msgid "transaction.history.inquiry"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__trdt
+msgid "trdt"
+msgstr "이체날짜"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,field_description:kr_pb_bank.field_transaction_history_inquiry__withdraw
+msgid "withdraw"
+msgstr "출금"
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_account_setup_bank_manual_config__birth_date
+msgid "“개인”인 경우 : 예금주 생년월일 (6자리-YYMMDD), “법인”인 경우 : 사업자번호(10자리)"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.inherit_setup_bank_account_wizard
+msgid "“개인”인 경우:예금주 생년월일(6자리-YYMMDD), “법인”인 경우:사업자번호(10자리)"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+msgid "“계좌 비밀번호 입력”"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_account_setup_bank_manual_config__value_bank_id
+msgid "“국민”인 경우 필수 입력"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.inherit_setup_bank_account_wizard
+msgid "“국민은행”인 경우 필수"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.inherit_setup_bank_account_wizard
+msgid "“금융기관 번호 입력"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+msgid "“금융기관 번호 입력”"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_account_setup_bank_manual_config__search_bank_password
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.inherit_setup_bank_account_wizard
+msgid "“조회전용 계정 비밀번호 (대구은행, 신협, 신한은행 필수)”"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields,help:kr_pb_bank.field_account_setup_bank_manual_config__search_bank_id
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.account_journal_form_inherit
+#: model_terms:ir.ui.view,arch_db:kr_pb_bank.inherit_setup_bank_account_wizard
+msgid "“조회전용 계정 아이디 (대구은행, 신협, 신한은행 필수)”"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_journal__bank_type__개인
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_setup_bank_manual_config__bank_type__개인
+msgid "개인"
+msgstr ""
+
+#. module: kr_pb_bank
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_journal__bank_type__법인
+#: model:ir.model.fields.selection,name:kr_pb_bank.selection__account_setup_bank_manual_config__bank_type__법인
+msgid "법인"
+msgstr ""

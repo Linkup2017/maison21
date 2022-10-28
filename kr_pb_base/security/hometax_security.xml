@@ -1,0 +1,30 @@
+    <odoo noupdate="0">
+
+        <record id="module_category_linkup_etax_hometax" model="ir.module.category">
+            <field name="name">Etax Intgerate</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <record id="group_linkup_etax_hometax_user" model="res.groups">
+            <field name="name">Linkup Etax User</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+            <field name="category_id" ref="module_category_linkup_etax_hometax" />
+        </record>
+
+        <record id="group_linkup_etax_hometax_manager" model="res.groups">
+            <field name="name">Linkup Etax Manager</field>
+            <field name="category_id" ref="module_category_linkup_etax_hometax" />
+            <field
+            name="implied_ids"
+            eval="[(4, ref('group_linkup_etax_hometax_user'))]"
+        />
+            <field
+            name="users"
+            eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"
+        />
+
+
+        </record>
+
+
+</odoo>

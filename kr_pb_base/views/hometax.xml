@@ -1,0 +1,36 @@
+<odoo>
+    <record id="view_hometax_move_form" model="ir.ui.view">
+        <field name="name">hometax.move.connect.form</field>
+        <field name="inherit_id" ref="kr_etax.view_hometax_move_form" />
+        <field name="model">hometax.move</field>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet" position='inside'>
+                <group class="ktax_group">
+                    <field
+                        name="sale_ids"
+                        widget="many2many_tags"
+                        options="{'no_open': False}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+<!--    <record id="view_hometax_move_tree" model="ir.ui.view">-->
+<!--        <field name="name">hometax.move.connect.tree</field>-->
+<!--        <field name="inherit_id" ref="kt_etax.view_hometax_move_tree" />-->
+<!--        <field name="model">hometax.move</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--           <xpath expr="//field[@name='state']" position="after">-->
+<!--                 <field-->
+<!--                    name="sale_ids"-->
+<!--                    string="청구서"-->
+<!--                    widget="many2many_tags"-->
+<!--                />-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
+
+
+
+</odoo>

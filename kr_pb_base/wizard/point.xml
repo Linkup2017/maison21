@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="popbill_point_wizard_form" model="ir.ui.view">
+        <field name="name">popbill.point.wizard.form</field>
+        <field name="model">popbill.point.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Popbill Point">
+                <sheet>
+                    <group name="Point">
+                        <field name="currency_id" invisible="1"/>
+                        <field name="point" widget="monetary"/>
+
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="포인트 충전"
+                        name="etax_point_charge"
+                        type="object"
+                        default_focus="1"
+                        class="btn-primary"
+                    />
+                    <button
+                        string="포인트 충전내역"
+                        name="etax_point_charge_history"
+                        type="object"
+                        default_focus="1"
+                        class="btn-primary"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="popbill_point_wizard_action" model="ir.actions.act_window">
+        <field name="name">Popbill Point</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">popbill.point.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="popbill_point_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

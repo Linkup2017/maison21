@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_move_form" model="ir.ui.view">
+        <field name="name">account.move.form</field>
+        <field name="inherit_id" ref="account.view_move_form" />
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@name='button_box']" position='inside'>
+                 <button
+                    name="open_etaxview"
+                    class="oe_stat_button"
+                    icon="fa-bars"
+                    type="object"
+                    attrs="{'invisible': [('etax_id', '=', False)]}"
+                    string="Hometax bill"
+                >
+                 </button>
+            </xpath>
+            <xpath expr="//button[@name='button_draft']" position='after'>
+                  <field name="reverse_bool" invisible="1" />
+                  <field name="etax_id" invisible="1" />
+                  <field name="etax_type" invisible="1" />
+                  <field name="invisible_create_etax" invisible="1" />
+                  <button
+                    name="create_etax"
+                    class="oe_highlight"
+                    string="Issue eTax"
+                    type="object"
+                    groups="account.group_account_invoice"
+                    attrs="{'invisible': [('invisible_create_etax', '=', True)]}"
+                />
+            </xpath>
+            <xpath expr="//field[@name='invoice_date']" position='after'>
+                <field name="etax_amount_total" />
+                <field
+                    name="etax_state"
+                    style="color: red;"
+                    attrs="{'invisible': [('etax_state','!=','canceled')]}"
+                />
+                <field
+                    name="etax_state"
+                    style="color: green;"
+                    attrs="{'invisible': [('etax_state','!=','issued')]}"
+                />
+                <field
+                    name="etax_state"
+                    style="color: green;"
+                    attrs="{'invisible': [('etax_state','!=','sent')]}"
+                />
+                <field
+                    name="etax_state"
+                    style="color: cadetblue;"
+                    attrs="{'invisible': [('etax_state','!=','draft')]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_invoice_tree" model="ir.ui.view">
+        <field name="name">linkup.account.invoice.tree</field>
+        <field name="inherit_id" ref="account.view_invoice_tree" />
+        <field name="model">account.move</field>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='company_currency_id']" position='after'>
+                <field name="etax_amount_total" />
+                <field name="etax_name" />
+                <field name="etax_type" />
+                <field name="etax_state" widget="badge"
+                       decoration-success="etax_state == 'sent'"
+                       decoration-info="etax_state == 'issued'"
+                       decoration-danger="etax_state == 'sent_error'"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

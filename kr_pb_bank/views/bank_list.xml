@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="res_bank_list" model="ir.actions.act_window">
+        <field name="name">Bank List</field>
+        <field name="res_model">res.bank.list</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="res_bank_list_tree" model="ir.ui.view">
+        <field name="name">Bank List Tree</field>
+        <field name="model">res.bank.list</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type_selection"/>
+                <field name="name" />
+                <field name="bank_code"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="res_bank_list_form" model="ir.ui.view">
+        <field name="name">Bank List Form</field>
+        <field name="model">res.bank.list</field>
+        <field name="priority">1</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="type_selection"/>
+                        <field name="name" />
+                        <field name="bank_code"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <menuitem id="res_bank_list_menu" name="Financial Institution List"
+               action="res_bank_list" parent="kr_pb_bank.bank_menu_action" />
+</odoo>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+        <record id="action_hometax_moves1" model="ir.actions.act_window">
+            <field name="name">Hometax Bill</field>
+            <field name="res_model">hometax.move</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('issueType','=','issueType1')]</field>
+            <field name="context">{'default_issueType':'issueType1'}</field>
+        </record>
+
+        <menuitem name="Hometax bill" id="mainhometax" />
+
+        <menuitem
+        name="Hometax bill"
+        action="action_hometax_moves1"
+        sequence="1"
+        id="etax_korea.hometax1"
+        parent="etax_korea.mainhometax"
+    />
+
+
+</odoo>

@@ -1,0 +1,6 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_sms_sms_manager,sms.sms.manager,model_sms_sms,group_sms_sms_manager,1,1,1,1
+access_sms_sms_user,sms.sms.user,model_sms_sms,group_sms_sms_user,1,0,0,0
+
+access_sms_api_manager,sms.api.manager,model_sms_api,group_sms_sms_manager,1,1,1,1
+access_sms_api_user,sms.api.user,model_sms_api,group_sms_sms_user,1,0,0,0

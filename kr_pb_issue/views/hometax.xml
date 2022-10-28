@@ -1,0 +1,53 @@
+<odoo>
+    <!-- res partner  -->
+    <record id="res_partner_form" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="model">res.partner</field>
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='internal_notes']" position='after'>
+                <page name="hometax" string="HomeTax information">
+                    <group string="HomeTax" name="hometax_information">
+
+                        <group>
+                            <field name="address_all" />
+                            <field name="business_class" />
+                            <field name="business_type" />
+                            <field name="damdang_user" />
+                            <field name="damdang_email" />
+                        </group>
+                        <group>
+                            <field name="ceo_name" />
+                            <field name="jong_no" />
+                            <field name="damdang_phone" />
+                            <field name="damdang_email1" />
+                            <field name="damdang_email2" />
+                        </group>
+
+                        <group>
+                            <field name="reverse_bool" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_tax_form" model="ir.ui.view">
+        <field name="name">account.tax.form</field>
+        <field name="inherit_id" ref="account.view_tax_form" />
+        <field name="model">account.tax</field>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='advanced_booleans']" position='inside'>
+                <field name="e_tax_is" />
+                <field
+                    name="e_tax_code"
+                    widget="selection"
+                    attrs="{'invisible': [('e_tax_is', '=', False)],'required': [('e_tax_is', '=', True)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

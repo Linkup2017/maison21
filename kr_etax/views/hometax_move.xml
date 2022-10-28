@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+        <record id="view_hometax_move_tree" model="ir.ui.view">
+            <field name="name">hometax.move.tree</field>
+            <field name="model">hometax.move</field>
+            <field name="arch" type="xml">
+                <tree string="Entries" create="0">
+                    <field name="writen_date" />
+                    <field name="customer_id" string="거래처" />
+                    <field name="customer_vat_no" string="사업자등록번호"/>
+                    <field name="amount_untaxed" />
+                    <field name="amount_tax" />
+                    <field name="amount_total" />
+                    <field name="name" string="발행문서번호" />
+                    <field name="currency_id" invisible="1" />
+                    <field name="etax_test" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_hometax_move_form" model="ir.ui.view">
+            <field name="name">hometax.move.form</field>
+            <field name="model">hometax.move</field>
+            <field name="arch" type="xml">
+                <form string="Entry" class="o_ktax" create="0">
+                    <header>
+                        <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,issued,sending,sent"/>
+                    </header>
+
+                    <sheet>
+                        <widget
+                        name="web_ribbon"
+                        title="발행"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': [ ('state', '!=', 'issued')]}"
+                    />
+                        <widget
+                        name="web_ribbon"
+                        title="전송중"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': [ ('state', '!=', 'sending')]}"
+                    />
+                        <widget
+                        name="web_ribbon"
+                        title="전송완료"
+                        bg_color="bg-success"
+                        attrs="{'invisible': [ ('state', '!=', 'sent')]}"
+                    />
+                        <widget
+                        name="web_ribbon"
+                        bg_color="bg-danger"
+                        title="발행취소"
+                        attrs="{'invisible': [ ('state', '!=', 'cancelled')]}"
+                    />
+                        <widget
+                        name="web_ribbon"
+                        bg_color="bg-danger"
+                        title="전송오류"
+                        attrs="{'invisible': [ ('state', '!=', 'sent_error')]}"
+                    />
+                        <div class="oe_title">
+                            <div class="d-flex flex-row">
+                                <h1 class="p-2">
+                                    <field name="name" readonly="1" />
+                                </h1>
+                                <h1 class="p-2 text-danger">
+                                    <field
+                                    name="etaxType"
+                                    readonly="1"
+                                    attrs="{'invisible': [ ('etaxType', '!=', 'etaxType2')]}"
+                                />
+                                </h1>
+                            </div>
+                        </div>
+
+
+
+                        <field name="id" invisible="1" />
+                        <field name="currency_id" invisible="1" />
+
+                        <group col="4" colspan="2" class="ktax_group">
+                            <group col="4" colspan="2">
+
+                                <field name="taxType1" colspan="4" />
+                                <field name="taxType_value" invisible="1"/>
+                                <field
+                                name="supplier_id"
+                                colspan="4"
+                                readonly="1"
+                            />
+                                <field name="supplier_vat_no" readonly="1" />
+                                <field name="supplier_jong" />
+                                <field name="supplier_sangho" />
+                                <field name="supplier_ceo_name" />
+                                <field name="supplier_address" colspan="4" />
+                                <field name="supplier_business_class" />
+                                <field name="supplier_business_type" />
+                                <field name="supplier_name" />
+                                <field name="supplier_tel" />
+                                <field name="supplier_email" colspan="4" />
+                            </group>
+                            <group col="4" colspan="2">
+                                <field name="invoiceeType" colspan="4" />
+                                <field name="customer_id" colspan="4" />
+                                <field name="customer_vat_no" />
+                                <field name="customer_jong" />
+                                <field name="customer_sangho" />
+                                <field name="customer_ceo_name" />
+                                <field name="customer_address" colspan="4" />
+                                <field name="customer_business_class" />
+                                <field name="customer_business_type" />
+                                <field name="customer_name" />
+                                <field name="customer_tel" />
+                                <field name="customer_email1" colspan="4" />
+                                <field name="customer_email2" colspan="4" />
+                            </group>
+                        </group>
+
+                        <div class="grid-container">
+                            <div><label for="writen_date" /></div>
+                            <div><label for="amount_untaxed" /></div>
+                            <div><label for="amount_tax" /></div>
+                            <div><label for="amount_total" /></div>
+                            <div class="subvalue"><field
+                                name="writen_date"
+                                nolabel="1"
+                            /></div>
+                            <div class="subvalue"><field
+                                name="amount_untaxed"
+                                nolabel="1"
+                            /></div>
+                            <div class="subvalue"><field
+                                name="amount_tax"
+                                nolabel="1"
+                            /></div>
+                            <div class="subvalue"><field
+                                name="amount_total"
+                                nolabel="1"
+                            /></div>
+                        </div>
+                        <group class="ktax_group">
+
+                            <field name="issueType" />
+                            <field name="reference" />
+                            <field
+                            name="line_ids"
+                            widget="section_and_note_one2many"
+                            mode="tree"
+                        >
+                                <tree
+                                editable="bottom"
+                                string="품목"
+                                default_order="sequence, id"
+                            >
+                                    <control>
+                                        <create
+                                        name="add_line_control"
+                                        string="Add a line"
+                                    />
+                                    </control>
+                                    <field name="sequence" widget="handle" />
+                                    <field name="writen_date" />
+                                    <field name="product_id" invisible="1" />
+                                    <field name="labelname" />
+                                    <field name="product_uom_id" />
+                                    <field name="quantity" />
+                                    <field name="price_unit" />
+                                    <field name="price_subtotal" />
+                                    <field name="amount_tax" />
+                                    <field name="bigo" />
+                                    <field name="currency_id" invisible="1" />
+                                </tree>
+                                <form>
+                                    <group>
+                                        <field name="writen_date" />
+                                        <field
+                                        name="product_id"
+                                        domain="['|', ('company_id', '=', False), ('company_id', '=', parent.supplier_id)]"
+                                    />
+                                        <field name="product_uom_id" />
+                                        <field name="quantity" />
+                                        <field name="price_unit" />
+                                        <field name="price_subtotal" />
+                                        <field name="amount_tax" />
+                                        <field name="bigo" />
+                                        <field
+                                        name="currency_id"
+                                        invisible="1"
+                                    />
+                                    </group>
+                                </form>
+                            </field>
+                        </group>
+                        <div class="grid-container1">
+                           <div><label for="amount_total" /></div>
+                           <div><label for="cashtype1" /></div>
+                           <div><label for="cashtype2" /></div>
+                           <div><label for="cashtype3" /></div>
+                           <div><label for="cashtype4" /></div>
+                           <div class="subvalue"><field
+                                name="amount_total"
+                                nolabel="1"
+                            /></div>
+                           <div class="subvalue"><field
+                                name="cashtype1"
+                                nolabel="1"
+                            /></div>
+                           <div class="subvalue"><field
+                                name="cashtype2"
+                                nolabel="1"
+                            /></div>
+                           <div class="subvalue"><field
+                                name="cashtype3"
+                                nolabel="1"
+                            /></div>
+                           <div class="subvalue"><field
+                                name="cashtype4"
+                                nolabel="1"
+                            /></div>
+                        </div>
+
+                        <div class="grid-container2">
+                            <div>이금액을_</div>
+                            <div class="subvalue"><field
+                                name="purposeType"
+                                nolabel="1"
+                            /></div>
+                            <div>_합니다.</div>
+                        </div>
+                        <group>
+                            <field name="MgtKeyType"/>
+                        </group>
+                        <group
+                        string="전송 결과"
+                        attrs="{'invisible': [('state', '=', 'draft')]}"
+                    >
+                            <group>
+                                <field name="p_itemKey" />
+                                <field name="p_stateCode" />
+                                <field name="p_ntsconfirmNum" />
+                                <field name="p_ntsresult" />
+                            </group>
+                            <group>
+                                <field name="p_ntssendDT" />
+                                <field name="p_ntssendErrCode" />
+                                <field name="p_invoiceeCorpName" />
+                                <field name="p_invoiceeCorpNum" />
+                            </group>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field
+                        name="message_follower_ids"
+                        groups="base.group_user"
+                    />
+                        <field name="activity_ids" />
+                        <field name="message_ids" />
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_hometax_moves1" model="ir.actions.act_window">
+            <field name="name">Hometax Bill</field>
+            <field name="res_model">hometax.move</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('issueType','=','issueType1')]</field>
+            <field name="context">{'default_issueType':'issueType1'}</field>
+        </record>
+
+        <record id="action_hometax_moves2" model="ir.actions.act_window">
+            <field name="name">Hometax Bill</field>
+            <field name="res_model">hometax.move</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Hometax Bill" id="mainhometax" />
+
+        <menuitem
+        name="Hometax Bill"
+        action="action_hometax_moves1"
+        sequence="1"
+        id="kr_etax_hometax1"
+        parent="kr_etax.mainhometax"
+    />
+        <menuitem
+        name="Hometax Bill"
+        action="action_hometax_moves2"
+        sequence="1"
+        id="kr_etax_hometax2"
+        parent="kr_etax.kr_etax_hometax1"
+    />
+
+
+</odoo>

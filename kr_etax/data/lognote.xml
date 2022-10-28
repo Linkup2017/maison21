@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+        <record id="order_issued" model="mail.message.subtype">
+            <field name="name">eTax issued</field>
+            <field name="res_model">hometax.move</field>
+            <field name="default" eval="False" />
+            <field name="description">eTax issued</field>
+        </record>
+        <record id="order_sent" model="mail.message.subtype">
+            <field name="name">eTax sent</field>
+            <field name="res_model">hometax.move</field>
+            <field name="default" eval="False" />
+            <field name="description">eTax sent</field>
+        </record>
+        <record id="order_canceled" model="mail.message.subtype">
+            <field name="name">eTax canceled</field>
+            <field name="res_model">hometax.move</field>
+            <field name="default" eval="False" />
+            <field name="description">eTax canceled</field>
+        </record>
+
+</odoo>

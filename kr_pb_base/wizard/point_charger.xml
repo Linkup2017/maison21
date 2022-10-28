@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="popbill_point_charger_wizard_form" model="ir.ui.view">
+        <field name="name">popbill.point.charger.wizard.form</field>
+        <field name="model">popbill.point.charger.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Popbill Point Charger">
+                <sheet>
+                    <group >
+                        <field name="url_fields" />
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        string="Cancel"
+                        class="btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="popbill_point_charger_wizard_action" model="ir.actions.act_window">
+        <field name="name">Popbill Point Charger URL</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">popbill.point.charger.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="popbill_point_charger_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

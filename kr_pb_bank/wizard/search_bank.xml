@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+    <record id="search_bank_account_form" model="ir.ui.view">
+        <field name="name">search.bank.account.form</field>
+        <field name="model">search.bank.account</field>
+        <field name="arch" type="xml">
+            <form string="Search Account Bank">
+                <sheet>
+                        <span class="font-weight-bold text-danger">조회기간은 최대 3개월 까지 조회가 가능합니다.</span>
+                    <group>
+                        <field name="sdate" widget="daterange" options="{'related_end_date': 'edate'}" />
+                        <field name="edate" widget="daterange" options="{'related_start_date': 'sdate'}" />
+
+
+                    </group>
+                    <footer>
+                        <button name="search_bank_check_etax_status_all" string="Search" type="object" class='btn btn-primary'/>
+                        <button string="Cancel" calss="btn-secondary" speical="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="search_bank_account_action" model="ir.actions.act_window">
+        <field name="name">Search Bank History</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">search.bank.account</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="search_bank_account_form" />
+        <field name="context">{}</field>
+        <field name="target">new</field>
+
+        <field name="binding_model_id" ref="account.model_account_journal" />
+        <field name="binding_view_types">form</field>
+    </record>
+
+
+
+    <record id="search_bank_action_form" model="ir.actions.act_window">
+        <field name="name">Search Bank Action</field>
+        <field name="res_model">account.journal</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+     <record id="search_account_journal_form" model="ir.actions.act_window">
+       <field name="name">Search Account Journal</field>
+       <field name="res_model">account.journal</field>
+       <field name="domain">[('bank_code', '!=', None)]</field>
+       <field name="view_mode">tree,form</field>
+    </record>
+
+
+<!--    <menuitem id="account_banks_search_menu_wizard" name="Search" action="search_bank_account_wizard"-->
+<!--              parent="account.menu_finance_entries_actions" sequence="2"/>-->
+
+    <menuitem name="Bank" id="bank_menu_action" parent="account.menu_finance_entries" sequence="12"/>
+
+    <menuitem
+        name="Bank"
+        action="search_account_journal_form"
+        sequence="1"
+        id="popbill_bank"
+        parent="bank_menu_action"
+    />
+
+       <menuitem
+        name="Bank statement"
+        action="search_account_statement"
+        sequence="2"
+        id="popbill_bank_statement"
+        parent="bank_menu_action"
+    />
+
+</odoo>
